@@ -57,6 +57,6 @@ public class Theatre {
   @Override
   public String toString() {
     return "Theatre{" + "theatreId=" + theatreId + ", theatreName='" + theatreName + '\'' + ", ticketPrice="
-        + ticketPrice + ", city=" + city + '}';
+        + ticketPrice + ", city=" + city.getCityName() + '}';
   }
 }

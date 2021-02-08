@@ -3,6 +3,7 @@ package com.upgrad.movieapp.entities;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -16,7 +17,7 @@ public class City {
   @Column(length = 20, nullable = false)
   private String cityName;
 
-  @OneToMany (mappedBy = "city")
+  @OneToMany (mappedBy = "city", fetch = FetchType.EAGER)
   private Set<Theatre> theatres;
 
   public int getCityId() {
