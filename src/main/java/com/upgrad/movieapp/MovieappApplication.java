@@ -1,99 +1,62 @@
 package com.upgrad.movieapp;
 
-import com.upgrad.movieapp.dao.CustomerDAO;
-import com.upgrad.movieapp.dao.MovieDao;
+import com.upgrad.movieapp.dao.CustomerRepository;
 import com.upgrad.movieapp.entities.Customer;
-import com.upgrad.movieapp.entities.Movie;
 import java.time.LocalDateTime;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
 @SpringBootApplication
-public class MovieappApplication {
+public class MovieappApplication implements CommandLineRunner {
+
+	@Autowired
+	CustomerRepository customerRepository ;
 
 	public static void main(String[] args) {
 
 
 		ApplicationContext context = SpringApplication.run(MovieappApplication.class, args);
 
-//		CustomerDAO customerDAO = context.getBean(CustomerDAO.class);
-////
-////
-////		Customer customer = new Customer();
-////		customer.setFirstName("Emma");
-////		customer.setLastName("Stone");
-////		customer.setUserName("email123stone");
-////		customer.setPassword("*******");
-////		customer.setDateOfBirth(LocalDateTime.of(1988,11,6,0,0));
-////
-////		System.out.println("Before saving : "+customer);
-////		Customer savedCustomer = customerDAO.save(customer);
-////
-////		System.out.println("After saving : "+ savedCustomer);
-////
-////		Customer retrievedCustomer = customerDAO.findById(savedCustomer.getCustomerId());
-////		System.out.println("Retrieved customer : "+ retrievedCustomer);
-////
-////
-////
-////		customer.setUserName("newName");
-////
-////		Customer updatedCustomer = customerDAO.update(customer);
-////		System.out.println("Updated customer : "+ updatedCustomer);
-////
-////
-////
-////		customerDAO.delete(updatedCustomer);
-////
-////		System.out.println("After deleting : "+ customerDAO.findById(updatedCustomer.getCustomerId()));
-
-		/**
-		 * Crud operation on Movies
-		 */
-
-//		MovieDao movieDao = context.getBean(MovieDao.class);
-//
-//		System.out.println(movieDao);
-//
-//		Movie movie = new Movie();
-//
-//		movie.setMovieName("Avengers : Infinity War");
-//		movie.setMovieDescription("The Avenges should must stop Thano's");
-//		movie.setReleaseDate(LocalDateTime.of(2018,4,27,5,30));
-//		movie.setDuration(150);
-//		movie.setCoverPhotoUrl("Cover photo url");
-//    movie.setTrailerUrl("Trailer URL");
-//
-//		System.out.println("Before saving : "+ movie);
-//
-//		Movie savedMovie = movieDao.save(movie);
-//
-//		System.out.println("After Saving : "+ savedMovie);
-//
-//		//We want to search based on the primary key which movie id
-//		Movie retrievedMovie = movieDao.findById(savedMovie.getMovieId()).orElse(null);
-//
-//		System.out.println("After retrieving : " + retrievedMovie);
-//
-//
-//
-//		movie.setDuration(160);
-//
-//		Movie movieUpdated = movieDao.save(movie);
-//
-//		System.out.println("Updated movies : "+ movieUpdated);
-//
-//
-//		movieDao.delete(movieUpdated);
-//
-//		System.out.println("After deleting : "+ movieDao.findById(savedMovie.getMovieId()).orElse(null));
-
 	}
 
+	@Override
+	public void run(String... args) throws Exception {
+		Customer customer1 = new Customer(1, "Vishwa", "Mohan", "vmohan",
+				"*********", LocalDateTime.of(1995,12,07,12,00));
+		Customer customer2 = new Customer(2, "Sachin", "Mohan", "smohan",
+				"*********", LocalDateTime.of(1975,8,04,12,00));
+		Customer customer3 = new Customer(3, "Rakesh", "Roshan", "rroshan",
+				"*********", LocalDateTime.of(1985,10,03,11,00));
 
+		/**
+		 * How to save these in the mongodb
+		 */
+		customerRepository.save(customer1);
+		customerRepository.save(customer2);
+		customerRepository.save(customer3);
+
+		/**
+		 * Fetching the data from the Mongodb
+		 */
+		for(Customer customer : customerRepository.findAll()){
+			System.out.println(customer);
+		}
+
+		/**
+		 * Find the record based on the first Name
+		 */
+		System.out.println(customerRepository.findByFirstName("Vishwa"));
+
+		/**
+		 * Fetch the results based on the last name
+		 */
+		System.out.println(customerRepository.findByLastName("Mohan"));
+
+	}
 }
