@@ -4,6 +4,7 @@ import com.upgrad.movieapp.dao.CustomerDAO;
 import com.upgrad.movieapp.dao.MovieDao;
 import com.upgrad.movieapp.entities.Customer;
 import com.upgrad.movieapp.entities.Movie;
+import com.upgrad.movieapp.services.MovieService;
 import java.time.LocalDateTime;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -92,6 +93,31 @@ public class MovieappApplication {
 //		movieDao.delete(movieUpdated);
 //
 //		System.out.println("After deleting : "+ movieDao.findById(savedMovie.getMovieId()).orElse(null));
+
+		/**
+		 *
+		 * Testing movie service
+		 */
+
+//		MovieService movieService = context.getBean(MovieService.class);
+//
+//		System.out.println("Movie Service bean : "+ movieService);
+//
+//		Movie movie1 = new Movie();
+//		movie1.setMovieName("Avengers");
+//		movie1.setMovieDescription("It is superheroes movie");
+//		movie1.setReleaseDate(LocalDateTime.of(2020,11,04,23,12));
+//    movie1.setCoverPhotoUrl("photo url");
+//    movie1.setTrailerUrl("trailer url");
+//    movie1.setDuration(120);
+//
+//
+//    Movie savedMovie  = movieService.acceptMovieDetails(movie1);
+//
+//		System.out.println(savedMovie);
+//
+//		Movie searchedMovie = movieService.getMovieDetails(savedMovie.getMovieId());
+//		System.out.println("Searched movie : "+ searchedMovie);
 
 	}
 
