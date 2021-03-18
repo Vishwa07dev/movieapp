@@ -69,4 +69,10 @@ public class MovieController {
     MovieDTO updatedMovieDTO = modelmapper.map(updatedMovie, MovieDTO.class);
     return new ResponseEntity<>(updatedMovieDTO,HttpStatus.OK);
   }
+
+  @DeleteMapping(value = "/movies/{id}")
+  public ResponseEntity deleteMovie(@PathVariable(name = "id") int id)throws  MovieDetailsNotFoundException{
+    movieService.deleteMovie(id);
+    return new ResponseEntity<>(null,HttpStatus.OK);
+  }
 }

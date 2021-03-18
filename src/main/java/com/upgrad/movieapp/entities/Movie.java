@@ -35,9 +35,6 @@ public class Movie {
   @Column(length = 500, nullable = false)
   private String trailerUrl;
 
-  @ManyToMany
-  private Set<Theatre> theatres ;
-
   public int getMovieId() {
     return movieId;
   }
