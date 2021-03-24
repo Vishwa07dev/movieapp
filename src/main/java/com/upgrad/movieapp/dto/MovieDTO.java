@@ -5,14 +5,19 @@ import java.time.LocalDateTime;
 
 public class MovieDTO {
 
-  private int movieId;
-  private String movieName;
-  private String movieDescription;
+  private int movieId ;
+
+  private String movieName ;
+
+  private String movieDescription ;
+
   private LocalDateTime releaseDate;
+
   private int duration;
+
   private String coverPhotoUrl;
+
   private String trailerUrl;
-  private int statusId;
 
   public int getMovieId() {
     return movieId;
@@ -68,20 +73,5 @@ public class MovieDTO {
 
   public void setTrailerUrl(String trailerUrl) {
     this.trailerUrl = trailerUrl;
-  }
-
-  public int getStatusId() {
-    return statusId;
-  }
-
-  public void setStatusId(int statusId) {
-    this.statusId = statusId;
-  }
-
-  @Override
-  public String toString() {
-    return "MovieDTO{" + "movieId=" + movieId + ", movieName='" + movieName + '\'' + ", movieDescription='"
-        + movieDescription + '\'' + ", releaseDate=" + releaseDate + ", duration=" + duration + ", coverPhotoUrl='"
-        + coverPhotoUrl + '\'' + ", trailerUrl='" + trailerUrl + '\'' + ", statusId=" + statusId + '}';
   }
 }

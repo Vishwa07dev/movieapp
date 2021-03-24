@@ -1,27 +1,24 @@
 package com.upgrad.movieapp.entities;
 
 import java.time.LocalDateTime;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 
 
 @Entity
 public class Movie {
-
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private int movieId ;
 
-  @Column(length = 50, nullable = false, unique = true)
+  @Column( length=50, nullable = false , unique = true)
   private String movieName ;
 
-  @Column(name="movie_desc" ,length = 500, nullable = false)
-  private String movieDescription;
+  @Column(name="movie_desc", length = 500, nullable = false)
+  private String movieDescription ;
 
   @Column(nullable = false)
   private LocalDateTime releaseDate;
@@ -32,7 +29,7 @@ public class Movie {
   @Column(length = 500, nullable = false)
   private String coverPhotoUrl;
 
-  @Column(length = 500, nullable = false)
+  @Column(length =500, nullable = false)
   private String trailerUrl;
 
   public int getMovieId() {

@@ -12,7 +12,7 @@ public interface MovieService {
 
   public List<Movie> acceptMultipleMovieDetails(List<Movie> movies);
 
-  public Movie getMovieDetails(int id ) ;
+  public Movie getMovieDetails(int id);
 
   public Movie updateMovieDetails(int id , Movie movie);
 
@@ -20,5 +20,5 @@ public interface MovieService {
 
   public List<Movie> getAllMovies();
 
-  public Page<Movie> getPaginatedMovieDetails(Pageable pageRequest);
+  public Page<Movie> getPaginatedMovieDeatails(Pageable pageable);
 }
